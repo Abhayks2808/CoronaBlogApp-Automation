@@ -1,0 +1,64 @@
+<%- include('../partials/header') %>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">BLOGDUDE</p>
+            <div class="list-group">
+               <li class="list-group-item active">Info 1</li>   
+               <li class="list-group-item">Info 2</li>
+               <li class="list-group-item">Info 3</li>
+            </div>
+        </div>
+        <div class="col-md-9 mt-5">
+            <div class="card shadow-sm">
+                <img class="img-fluid img-thumbnail img-responsive" src="<%=coronaBlog.image %>" style="padding:0">
+                <div class="card-body">
+                    <h5 class="card-title text-capitalise"><%=coronaBlog.title %></h5>
+                    <p class="card-text"><%= coronaBlog.description %></p>
+                    <p>
+                        <em>submitted By</em> <%= coronaBlog.author.username %></p>
+                       <% if(currentUser && coronaBlog.author.id.equals(currentUser._id)) { %>
+                        <a class="btn btn-dark" href="/coronaBlogs/<%=coronaBlog._id %>/Edit">Edit</a>
+                        <form  style="display:inline" action="/coronaBlogs/<%=coronaBlog._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-dark">Delete</button>
+                        </form>  
+                        <% } %>               
+                    </div>   
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <div class="text-right">
+                    <a href="/coronaBlogs/<%=coronaBlog._id %>/comments/new" class="btn btn-dark">Add new Comment</a>
+                               
+                </div>
+                <hr>
+                <% coronaBlog.comments.forEach((comment) => { %>
+                    <div class="row">
+                        <div class="col-md-12">
+                           <strong><%= comment.author.username %></strong> 
+                            <span class="text=right" style="float:right"><%= comment.created.toDateString() %></span>
+                            <p>
+                                <%=comment.text %>
+                           </p>
+                           <% if(currentUser && comment.author.id.equals(currentUser._id)) { %> 
+                           <a class="btn btn-danger" href="/coronaBlogs/<%=coronaBlog._id %>/comments/<%=comment._id %>/edit">Edit</a>
+                        <form style="display:inline" action="/coronaBlogs/<%=coronaBlog._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST">
+                          <input  type="submit" class="btn btn-danger" value="Delete">
+                        </form>
+                        <% } %>
+                        </div>
+                    </div>
+                   
+               <% }) %>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+
+
+<%- include ('../partials/footer') %>

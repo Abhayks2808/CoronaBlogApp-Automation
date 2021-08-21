@@ -1,0 +1,31 @@
+<%- include ('../partials/header') %>
+
+
+
+<header class="jumbotron  text-light" style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJA5_5MlwjkovbnNo4_f2O_7Rq62ESw1C8JQ&usqp=CAU);background-repeat: no-repeat;background-size: cover;">
+   <div class="container">
+       <div class="jumbotron-text mt-5 text-center">
+        <h1 class="jumbotronText  display-3">Welcome to BlogDude</h1>
+        <p class=" lead jumbotronText">View and post all the latest information about corona on our website</p>
+         <a class="btn btn-danger btn-large" href="/coronaBlogs/new">Add new Blog</a> 
+    </div>
+</div>
+</header>
+<div class="container">
+    <div class="row">
+        <% coronaBlogs.forEach((coronaBlog) => { %>
+        <div class=" col-lg-4 col-md-6 col-sm-12">
+            <div class="card indexCards shadow border-0 mt-4">
+                <img class="card-img-top" src="<%=coronaBlog.image %>" alt="Card image cap">
+                <div class="card-body">
+                    <h4><%= coronaBlog.title %></h4>
+                    <a class="btn btn-large btn-dark" href="/coronaBlogs/<%= coronaBlog._id %>" style="color:#fff">More Info</a>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+       
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
