@@ -1,6 +1,6 @@
 MY BLOG Web App + some Automation
 
-[BlogAppLink] (https://blogdude.herokuapp.com/)
+
 [BlogAppLink](https://blogdude.herokuapp.com/)
 
 * This project comprise of two things
