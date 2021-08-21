@@ -1,7 +1,7 @@
 MY BLOG Web App + some Automation
 
 [BlogAppLink] (https://blogdude.herokuapp.com/)
-[Link to Google](https://www.google.com)
+[BlogAppLink](https://blogdude.herokuapp.com/)
 
 * This project comprise of two things
 1. complete blog website with backend and frontend mainly related to corona
